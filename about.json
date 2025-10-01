@@ -1,0 +1,32 @@
+{
+  "name": "JENS TOPIC LIST SWITCHER",
+  "component": true,
+  "license_url": null,
+  "about_url": null,
+  "authors": null,
+  "theme_version": null,
+  "minimum_discourse_version": null,
+  "maximum_discourse_version": null,
+  "assets": {
+    "icons-sprite": "assets/icons-sprite.svg"
+  },
+  "color_schemes": {},
+  "modifiers": {
+    "serialize_topic_excerpts": true,
+    "topic_thumbnail_sizes": [
+      [
+        400,
+        400
+      ],
+      [
+        600,
+        600
+      ],
+      [
+        800,
+        800
+      ]
+    ]
+  },
+  "learn_more": "https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966"
+}

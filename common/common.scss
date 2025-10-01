@@ -1,0 +1,142 @@
+/* MIGHT CONFLICT WITH: Topic Cards, Topic Thumbnails, Topic List Previews */
+/* TOPIC LIST LAYOUTS TOGGLE SWITCHER - as of 2025-03-02 */
+
+/* START Fix when used with Density Toggle TC */
+.f-d-compact.navigation-topics.topic-list-layout-table-excerpts .main-link.topic-list-data {
+    flex-direction: column !important;
+}
+.f-d-cozy .topic-list .topic-list-data,
+.f-d-compact .topic-list .topic-list-data {
+    padding-left: .67em !important;
+}
+/* END Fix when used with Density Toggle TC */
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item {
+    width: 20% !important;
+}
+
+@media only screen and (max-width: 1500px) {
+    .desktop-view .topic-list[data-layout=cards] .topic-list-item {
+        width: 25% !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .desktop-view .topic-list[data-layout=cards] .topic-list-item {
+        width: 33% !important;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .desktop-view .topic-list[data-layout=cards] .topic-list-item {
+        width: 50% !important;
+    }
+}
+
+.mobile-view .topic-list[data-layout=cards] .topic-list-item>.topic-list-data {
+    padding: .5em !important;
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item .excerpt {
+    grid-area: excerpt;
+    font-size: var(--font-down-2) !important;
+    margin-bottom: 0 !important;
+    overflow-x: hidden !important;
+/*    overflow-y: auto !important;
+    scrollbar-width: thin !important;
+*/
+    overflow-y: hidden !important;
+    /* height: 100% !important; */
+
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item .link-top-line {
+    grid-area: category !important;
+    font-size: unset !important;
+    margin-block: .25em;
+    line-height: 1 !important;
+    font-weight: 600 !important;
+    font-variant: all-small-caps !important;
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item .age {
+    grid-area: date;
+    justify-self: end;
+    font-size: var(--font-down-1);
+    margin-block: .25em !important;
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item .link-bottom-line {
+    grid-area: title !important;
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item .thumbnail {
+display: none !important;
+}
+
+
+.desktop-view body.topic-list-layout-cards .list-controls {
+    border-bottom: 1px solid var(--primary-low);
+    /* position: sticky; */
+    position: unset;
+    top: var(--header-offset);
+    padding-top: 1em;
+    /* z-index: 2; */
+    z-index: unset;
+    /* background: var(--secondary); */
+    background: none !important;
+    margin-top: -1em;
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item-separator {
+    border: none;
+    width: 100%;
+    max-width: 800px;
+    display: none;
+}
+
+/*
+.desktop-view .topic-list[data-layout=cards] tbody {
+    border: none !important;
+    display: flex !important;
+        justify-content: space-evenly !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+*/
+
+.desktop-view .topic-list[data-layout=cards] tbody {
+    border: none;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-flow: row wrap !important;
+    align-content: flex-start !important;
+}
+
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item {
+    display: grid !important;
+    /* display: block !important; */
+    grid-template-areas:
+        "category category date"
+        "title title title"
+        "replies posters posters";
+    padding: 1em !important;
+    height: 225px !important;
+    /* min-width:350px !important; */
+    overflow: hidden !important;
+    
+}
+
+.desktop-view .topic-list[data-layout=cards] .topic-list-item:has(.thumbnail):has(.excerpt) {
+    grid-template-areas:
+        "category category date"
+        "title title title"
+        "excerpt excerpt excerpt"
+        "replies posters posters" !important;
+    grid-template-columns: auto 1fr auto !important;
+}
+
+

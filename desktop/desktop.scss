@@ -1,0 +1,230 @@
+/* CONFLICTS WITH: Topic Cards, Topic Thumbnails, Topic List Previews */
+
+body.topic-list-layout-cards {
+  .top-lists,
+  .topic-list-bottom {
+    max-width: 800px;
+    margin: 1em auto;
+  }
+
+  .top-lists {
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--primary-low);
+  }
+
+  .list-controls {
+    border-bottom: 1px solid var(--primary-low);
+    position: sticky;
+    top: var(--header-offset);
+    padding-top: 1em;
+    z-index: 2;
+    background: var(--secondary);
+    margin-top: -1em;
+  }
+}
+
+body[class*="topic-list-layout-"] {
+  .topic-list[data-layout="cards"] {
+    thead {
+      display: none;
+    }
+    tbody {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .topic-list-item-separator {
+      border: none;
+      width: 100%;
+      max-width: 800px;
+      .topic-list-data {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        span {
+          display: flex;
+          line-height: normal;
+          top: -0.75em;
+        }
+      }
+    }
+
+    .topic-list-item {
+      display: grid;
+      grid-template-areas:
+        "category category date"
+        "title title title"
+        "replies posters posters";
+      gap: 0 .5em;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto auto auto 1fr;
+      padding: 1.75em 1em 2em;
+      border-bottom: 1px solid var(--primary-low);
+      width: 100%;
+      box-sizing: border-box;
+      max-width: 800px;
+
+      &:has(.thumbnail) {
+        grid-template-areas:
+          "category category date"
+          "title title title"
+          "image image image"
+          "replies posters posters";
+        .thumbnail {
+          max-height: 500px;
+          object-fit: contain;
+          background: rgba(0, 0, 0, 0.8);
+          margin-bottom: 1em;
+        }
+      }
+
+      &:has(.excerpt) {
+        grid-template-areas:
+          "category category date"
+          "title title title"
+          "excerpt excerpt excerpt"
+          "replies posters posters";
+      }
+
+      &:has(.thumbnail):has(.excerpt) {
+        grid-template-areas:
+          "category category date"
+          "title title image"
+          "excerpt excerpt image"
+          "replies posters image";
+        grid-template-columns: auto 1fr 200px;
+        .thumbnail {
+          height: 150px;
+          margin-bottom: 0;
+          object-fit: cover;
+        }
+      }
+
+      td,
+      .posts-map,
+      .num.activity a,
+      .posters,
+      .age {
+        // resets
+        padding: 0;
+        width: unset;
+        height: unset;
+        text-align: left;
+      }
+
+      &.last-visit {
+        border-bottom: 1px solid var(--primary-low) !important; // very specific core override
+      }
+
+      .main-link {
+        display: contents;
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+
+      .views {
+        display: none;
+      }
+
+      .link-top-line {
+        grid-area: title;
+        font-size: var(--font-up-1);
+        margin-block: 0.25em;
+        line-height: 1.2;
+      }
+
+      .link-bottom-line {
+        grid-area: category;
+      }
+
+      .posters {
+        grid-area: posters;
+        margin-top: auto;
+      }
+
+      .posts-map {
+        grid-area: replies;
+        margin-top: auto;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: start;
+        gap: 0.25em;
+        font-weight: normal;
+        margin-bottom: 0.1em;
+        .d-icon {
+          position: relative;
+          top: -0.05em;
+        }
+      }
+
+      .age {
+        grid-area: date;
+        justify-self: end;
+        font-size: var(--font-down-1);
+      }
+
+      .excerpt {
+        grid-area: excerpt;
+        font-size: var(--font-down-1);
+        margin-bottom: 1em;
+      }
+
+      .thumbnail {
+        grid-area: image;
+        justify-self: end;
+        align-self: end;
+        width: 100%;
+        object-fit: cover;
+        margin: 0.75em 0 0 1em;
+        border-radius: 0.25em;
+      }
+
+      .topic-post-badges,
+      .event-date-container {
+        font-size: var(--font-down-1);
+      }
+
+      .event-date-container {
+        position: relative;
+        top: -0.1em;
+      }
+    }
+  }
+
+  .topic-list[data-layout*="table-"] {
+    .topic-list-item {
+      .link-bottom-line {
+        font-size: var(--font-down-1);
+        margin-top: 0.25em;
+        line-height: var(--line-height-medium);
+      }
+      .excerpt {
+        width: 100%;
+        line-height: var(--line-height-large);
+        margin-top: 0.25em;
+        margin-bottom: 0.15em;
+        /* max-width: 70ch; */
+      }
+      &:not(.visited) {
+        .excerpt {
+          color: var(--primary-high);
+        }
+      }
+    }
+    .topic-excerpt {
+      display: none;
+    }
+  }
+
+  // incompatible, hide for now
+
+//  .ai-gists-dropdown-trigger {
+  //  display: none;
+//  }
+
+}

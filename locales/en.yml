@@ -1,0 +1,10 @@
+en:
+  theme_metadata:
+    description: ""
+    settings:
+      example_setting: A description of a setting.
+  toggle_labels:
+    table: List (Titles Only)
+    table_gists: List with AI summaries
+    table_excerpts: List + Excerpts
+    cards: Cards
